@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Andreas Fritzler</title>
-    <link>https://afritzler.github.io/</link>
-    <description>Recent content on Andreas Fritzler</description>
+    <title>Go on Andreas Fritzler</title>
+    <link>https://afritzler.github.io/categories/go/</link>
+    <description>Recent content in Go on Andreas Fritzler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://afritzler.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://afritzler.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,7 +17,7 @@
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://afritzler.github.io/posts/first-post/</guid>
-      <description>Something meaningful.</description>
+      <description>My First Post Something meaningful.</description>
     </item>
     
   </channel>
