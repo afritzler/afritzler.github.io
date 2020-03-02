@@ -8,7 +8,7 @@
 <meta name="description" content="If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using kind in conjunction with a local repository might be just the solution for you.
 Just create a script call kind-with-registry.sh which contains the following code
 #!/bin/sh set -o errexit # desired cluster name; default is &amp;#34;kind&amp;#34; KIND_CLUSTER_NAME=&amp;#34;${KIND_CLUSTER_NAME:-kind}&amp;#34; # create registry container unless it already exists reg_name=&amp;#39;kind-registry&amp;#39; reg_port=&amp;#39;5000&amp;#39; running=&amp;#34;$(docker inspect -f &amp;#39;{{." />
-<meta name="keywords" content="" />
+<meta name="keywords" content="kubernetes, cloud, machinelearning" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/" />
@@ -16,7 +16,7 @@ Just create a script call kind-with-registry.sh which contains the following cod
 
     <title>
         
-            Using Kind together with a Local Docker Registry :: Andreas Fritzler  — A simple theme for Hugo
+            Using Kind together with a Local Docker Registry :: Andreas Fritzler  — My personal website
         
     </title>
 
@@ -224,6 +224,12 @@ kubectl create deployment hello-server --image<span style="color:#f92672">=</spa
             
             <span></span>
             <span> <a href="https://afritzler.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
         </div>
     </div>
 </footer>
