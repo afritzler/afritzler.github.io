@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using kind in conjunction with a local repository might be just the solution for you.
+Just create a script call kind-with-registry.sh which contains the following code
+#!/bin/sh set -o errexit # desired cluster name; default is &amp;#34;kind&amp;#34; KIND_CLUSTER_NAME=&amp;#34;${KIND_CLUSTER_NAME:-kind}&amp;#34; # create registry container unless it already exists reg_name=&amp;#39;kind-registry&amp;#39; reg_port=&amp;#39;5000&amp;#39; running=&amp;#34;$(docker inspect -f &amp;#39;{{." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/" />
+
+
+    <title>
+        
+            Using Kind together with a Local Docker Registry :: Andreas Fritzler  — A simple theme for Hugo
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.5dcefbf8102eb536dd3e2de53ffebfa58599ab2435c241a0db81728a5e015f2e.css">
+
+
+
+
+<meta itemprop="name" content="Using Kind together with a Local Docker Registry">
+<meta itemprop="description" content="Using Kind together with a Local Docker Registry">
+<meta itemprop="datePublished" content="2020-03-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="237">
+<meta itemprop="image" content="https://afritzler.github.io"/>
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://afritzler.github.io"/>
+
+<meta name="twitter:title" content="Using Kind together with a Local Docker Registry"/>
+<meta name="twitter:description" content="Using Kind together with a Local Docker Registry"/>
+
+
+
+    <meta property="article:section" content="kubernetes" />
+
+    <meta property="article:section" content="development" />
+
+    <meta property="article:section" content="cloud" />
+
+
+
+    <meta property="article:published_time" content="2020-03-02 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">AF </span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://afritzler.github.io/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/">Using Kind together with a Local Docker Registry</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <p>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using <code>kind</code> in conjunction with a local repository might be just the solution for you.</p>
+<p>Just create a script call <code>kind-with-registry.sh</code> which contains the following code</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>set -o errexit
+
+<span style="color:#75715e"># desired cluster name; default is &#34;kind&#34;</span>
+KIND_CLUSTER_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>KIND_CLUSTER_NAME<span style="color:#66d9ef">:-</span>kind<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create registry container unless it already exists</span>
+reg_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kind-registry&#39;</span>
+reg_port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;5000&#39;</span>
+running<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.State.Running}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> 2&gt;/dev/null <span style="color:#f92672">||</span> true<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>running<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;true&#39;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -d --restart<span style="color:#f92672">=</span>always -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_port<span style="color:#e6db74">}</span><span style="color:#e6db74">:5000&#34;</span> --name <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry:2
+<span style="color:#66d9ef">fi</span>
+reg_ip<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.NetworkSettings.IPAddress}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create a cluster with the local registry enabled in containerd</span>
+cat <span style="color:#e6db74">&lt;&lt;EOF | kind create cluster --name &#34;${KIND_CLUSTER_NAME}&#34; --config=-
+</span><span style="color:#e6db74">kind: Cluster
+</span><span style="color:#e6db74">apiVersion: kind.x-k8s.io/v1alpha4
+</span><span style="color:#e6db74">containerdConfigPatches:
+</span><span style="color:#e6db74">- |-
+</span><span style="color:#e6db74">  [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry.mirrors.&#34;localhost:${reg_port}&#34;]
+</span><span style="color:#e6db74">    endpoint = [&#34;http://${reg_ip}:${reg_port}&#34;]
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p>This will spin up a <code>kind</code> cluster plus a local registry which is located under <code>localhost:5000</code>. <code>docker ps</code> should produce the following output if everything went well</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                       NAMES
+7b88dbd4757b        kindest/node:v1.17.0   <span style="color:#e6db74">&#34;/usr/local/bin/entr…&#34;</span>   <span style="color:#ae81ff">11</span> minutes ago      Up <span style="color:#ae81ff">11</span> minutes       127.0.0.1:32769-&gt;6443/tcp   kind-control-plane
+e40321acce8b        registry:2             <span style="color:#e6db74">&#34;/entrypoint.sh /etc…&#34;</span>   <span style="color:#ae81ff">14</span> minutes ago      Up <span style="color:#ae81ff">14</span> minutes       0.0.0.0:5000-&gt;5000/tcp      kind-registry
+</code></pre></div><h2 id="usage">Usage</h2>
+<p>To use your local setup run the following command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># inside your Dockerfile folder</span>
+docker build localhost:5000/hello-app:1.0 .
+docker push localhost:5000/hello-app:1.0
+kubectl create deployment hello-server --image<span style="color:#f92672">=</span>localhost:5000/hello-app:1.0
+</code></pre></div><h2 id="references">References</h2>
+<p>This post is based on the official <code>kind</code> <a href="https://kind.sigs.k8s.io/docs/user/local-registry/">documentation</a>. Additional information can be also found in the <a href="https://github.com/kubernetes-sigs/kind">kind</a> GitHub repository.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>237 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-02 01:00 &#43;0100</p>
+        </div>
+
+        
+
+        
+          <div id="comments" class="thin">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "afritzler-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="https://afritzler.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>
