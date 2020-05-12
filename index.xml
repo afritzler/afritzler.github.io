@@ -6,10 +6,19 @@
     <description>Recent content on Andreas Fritzler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2020 10:56:45 +0200</lastBuildDate>
     
 	<atom:link href="https://afritzler.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Projects</title>
+      <link>https://afritzler.github.io/projects/</link>
+      <pubDate>Tue, 12 May 2020 10:56:45 +0200</pubDate>
+      
+      <guid>https://afritzler.github.io/projects/</guid>
+      <description>Oopsie             Oopsie [/ˈuːpsi/] is a Kubernetes controller that watches all Events within a cluster and enriches failed objects with solutions found on StackOverflow (Github and other sources coming soon).         </description>
+    </item>
     
     <item>
       <title>Using Kind together with a Local Docker Registry</title>
