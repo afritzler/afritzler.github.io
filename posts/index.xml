@@ -1,38 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Andreas Fritzler</title>
-    <link>https://afritzler.github.io/posts/</link>
-    <description>Recent content in Posts on Andreas Fritzler</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 22:20:02 +0200</lastBuildDate>
-    
-	<atom:link href="https://afritzler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Installing Docker on a Raspberry Pi</title>
-      <link>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</link>
-      <pubDate>Mon, 18 May 2020 22:20:02 +0200</pubDate>
-      
-      <guid>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</guid>
-      <description>This is an easy step-by-step guide on how to install Docker on your Raspberry Pi. This setup targets Raspbian based Pi&amp;rsquo;s but should also work on Ubuntu.
+    <channel>
+        <title>Posts on Andreas Fritzler</title>
+        <link>https://afritzler.github.io/posts/</link>
+        <description>Recent content in Posts on Andreas Fritzler</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 18 May 2020 22:20:02 +0200</lastBuildDate>
+        <atom:link href="https://afritzler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Installing Docker on a Raspberry Pi</title>
+            <link>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</link>
+            <pubDate>Mon, 18 May 2020 22:20:02 +0200</pubDate>
+            
+            <guid>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</guid>
+            <description>This is an easy step-by-step guide on how to install Docker on your Raspberry Pi. This setup targets Raspbian based Pi&amp;rsquo;s but should also work on Ubuntu.
 First make sure your system is up to date
 sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade Get the installation script and run it
 curl -fsSL https://get.docker.com -o get-docker.sh sudo sh get-docker.sh The last thing left now is to add your pi user (or any other) to the docker group in order to interact with the Docker daemon.</description>
-    </item>
-    
-    <item>
-      <title>Using Kind together with a Local Docker Registry</title>
-      <link>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</link>
-      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</guid>
-      <description>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using kind in conjunction with a local repository might be just the solution for you.
+            <content type="html"><![CDATA[<p>This is an easy step-by-step guide on how to install Docker on your Raspberry Pi. This setup targets Raspbian based Pi&rsquo;s but should also work on Ubuntu.</p>
+<p>First make sure your system is up to date</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update <span style="color:#f92672">&amp;&amp;</span> sudo apt-get upgrade
+</code></pre></div><p>Get the installation script and run it</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+</code></pre></div><p>The last thing left now is to add your <code>pi</code> user (or any other) to the <code>docker</code> group in order to interact with the Docker daemon.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo usermod -aG docker Pi
+</code></pre></div><p>To validate that the installation was successful try to execute the following commands or run a <code>hello-world</code> container.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker version
+docker info
+docker run hello-world
+</code></pre></div><p>The end!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Using Kind together with a Local Docker Registry</title>
+            <link>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</link>
+            <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</guid>
+            <description>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using kind in conjunction with a local repository might be just the solution for you.
 Just create a script call kind-with-registry.sh which contains the following code
 #!/bin/sh set -o errexit # desired cluster name; default is &amp;#34;kind&amp;#34; KIND_CLUSTER_NAME=&amp;#34;${KIND_CLUSTER_NAME:-kind}&amp;#34; # create registry container unless it already exists reg_name=&amp;#39;kind-registry&amp;#39; reg_port=&amp;#39;5000&amp;#39; running=&amp;#34;$(docker inspect -f &amp;#39;{{.</description>
-    </item>
-    
-  </channel>
+            <content type="html"><![CDATA[<p>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using <code>kind</code> in conjunction with a local repository might be just the solution for you.</p>
+<p>Just create a script call <code>kind-with-registry.sh</code> which contains the following code</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>set -o errexit
+
+<span style="color:#75715e"># desired cluster name; default is &#34;kind&#34;</span>
+KIND_CLUSTER_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>KIND_CLUSTER_NAME<span style="color:#66d9ef">:-</span>kind<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create registry container unless it already exists</span>
+reg_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kind-registry&#39;</span>
+reg_port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;5000&#39;</span>
+running<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.State.Running}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> 2&gt;/dev/null <span style="color:#f92672">||</span> true<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>running<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;true&#39;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -d --restart<span style="color:#f92672">=</span>always -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_port<span style="color:#e6db74">}</span><span style="color:#e6db74">:5000&#34;</span> --name <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry:2
+<span style="color:#66d9ef">fi</span>
+reg_ip<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.NetworkSettings.IPAddress}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create a cluster with the local registry enabled in containerd</span>
+cat <span style="color:#e6db74">&lt;&lt;EOF | kind create cluster --name &#34;${KIND_CLUSTER_NAME}&#34; --config=-
+</span><span style="color:#e6db74">kind: Cluster
+</span><span style="color:#e6db74">apiVersion: kind.x-k8s.io/v1alpha4
+</span><span style="color:#e6db74">containerdConfigPatches:
+</span><span style="color:#e6db74">- |-
+</span><span style="color:#e6db74">  [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry.mirrors.&#34;localhost:${reg_port}&#34;]
+</span><span style="color:#e6db74">    endpoint = [&#34;http://${reg_ip}:${reg_port}&#34;]
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p>This will spin up a <code>kind</code> cluster plus a local registry which is located under <code>localhost:5000</code>. <code>docker ps</code> should produce the following output if everything went well</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                       NAMES
+7b88dbd4757b        kindest/node:v1.17.0   <span style="color:#e6db74">&#34;/usr/local/bin/entr…&#34;</span>   <span style="color:#ae81ff">11</span> minutes ago      Up <span style="color:#ae81ff">11</span> minutes       127.0.0.1:32769-&gt;6443/tcp   kind-control-plane
+e40321acce8b        registry:2             <span style="color:#e6db74">&#34;/entrypoint.sh /etc…&#34;</span>   <span style="color:#ae81ff">14</span> minutes ago      Up <span style="color:#ae81ff">14</span> minutes       0.0.0.0:5000-&gt;5000/tcp      kind-registry
+</code></pre></div><h2 id="usage">Usage</h2>
+<p>To use your local setup run the following command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># inside your Dockerfile folder</span>
+docker build localhost:5000/hello-app:1.0 .
+docker push localhost:5000/hello-app:1.0
+kubectl create deployment hello-server --image<span style="color:#f92672">=</span>localhost:5000/hello-app:1.0
+</code></pre></div><h2 id="references">References</h2>
+<p>This post is based on the official <code>kind</code> <a href="https://kind.sigs.k8s.io/docs/user/local-registry/">documentation</a>. Additional information can be also found in the <a href="https://github.com/kubernetes-sigs/kind">kind</a> GitHub repository.</p>
+]]></content>
+        </item>
+        
+    </channel>
 </rss>
