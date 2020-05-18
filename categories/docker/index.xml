@@ -6,7 +6,7 @@
     <description>Recent content in docker on Andreas Fritzler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 22:20:02 +0200</lastBuildDate>
     
 	<atom:link href="https://afritzler.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Installing Docker on a Raspberry Pi</title>
       <link>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 18 May 2020 22:20:02 +0200</pubDate>
       
       <guid>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</guid>
       <description>This is an easy step-by-step guide on how to install Docker on your Raspberry Pi. This setup targets Raspbian based Pi&amp;rsquo;s but should also work on Ubuntu.
