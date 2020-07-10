@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud on Andreas Fritzler</title>
+    <link>https://afritzler.github.io/tags/cloud/</link>
+    <description>Recent content in cloud on Andreas Fritzler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://afritzler.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Kind together with a Local Docker Registry</title>
+      <link>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</guid>
+      <description>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using kind in conjunction with a local repository might be just the solution for you.
+Just create a script call kind-with-registry.sh which contains the following code
+#!/bin/sh set -o errexit # desired cluster name; default is &amp;#34;kind&amp;#34; KIND_CLUSTER_NAME=&amp;#34;${KIND_CLUSTER_NAME:-kind}&amp;#34; # create registry container unless it already exists reg_name=&amp;#39;kind-registry&amp;#39; reg_port=&amp;#39;5000&amp;#39; running=&amp;#34;$(docker inspect -f &amp;#39;{{.</description>
+    </item>
+    
+  </channel>
+</rss>
