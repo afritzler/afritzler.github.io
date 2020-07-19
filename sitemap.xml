@@ -3,13 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://afritzler.github.io/posts/4-weeks-with-the-keychron-k6-mechanical-keyboard/</loc>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://afritzler.github.io/</loc>
-    <lastmod>2020-05-18T22:20:02+02:00</lastmod>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://afritzler.github.io/categories/</loc>
-    <lastmod>2020-05-18T22:20:02+02:00</lastmod>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afritzler.github.io/tags/gadgets/</loc>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afritzler.github.io/categories/gadgets/</loc>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afritzler.github.io/posts/</loc>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afritzler.github.io/tags/</loc>
+    <lastmod>2020-07-17T11:24:55+02:00</lastmod>
   </url>
   
   <url>
@@ -44,16 +69,6 @@
   
   <url>
     <loc>https://afritzler.github.io/posts/installing-docker-on-a-raspberry-pi/</loc>
-    <lastmod>2020-05-18T22:20:02+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afritzler.github.io/posts/</loc>
-    <lastmod>2020-05-18T22:20:02+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afritzler.github.io/tags/</loc>
     <lastmod>2020-05-18T22:20:02+02:00</lastmod>
   </url>
   

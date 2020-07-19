@@ -5,8 +5,46 @@
         <description>Recent content in Posts on Andreas Fritzler</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 18 May 2020 22:20:02 +0200</lastBuildDate>
+        <lastBuildDate>Fri, 17 Jul 2020 11:24:55 +0200</lastBuildDate>
         <atom:link href="https://afritzler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>4 Weeks with the Keychron K6 Mechanical Keyboard</title>
+            <link>https://afritzler.github.io/posts/4-weeks-with-the-keychron-k6-mechanical-keyboard/</link>
+            <pubDate>Fri, 17 Jul 2020 11:24:55 +0200</pubDate>
+            
+            <guid>https://afritzler.github.io/posts/4-weeks-with-the-keychron-k6-mechanical-keyboard/</guid>
+            <description>Four weeks ago I stumbled upon the mechanical keyboards from Keychron on social media. Since I was thinking about switching my current setup consisting of a Magic Keyboard, Magic Mouse, a regular Logitech mouse and Keyboard connected to my MacBook Pro and Linux box respectively, to a setup supporting multiple devices at once.
+I defined for me the following requirements for a keyboard:
+ Wireless/Bluetooth (sick of having cables all over the place) Build in battery (replacing batteries every 2 weeks is a pain and an environmental disaster) Multi device support (ideally 3 or more) Mechanical keys (for the better touch) Compact (&amp;lt; 100%) layout (no need for numpad) Retro look (:-))  From browsing keyboards from various vendors my choice fell on the Keychron K6 mechanical with brown Gateron switches with white background lighting.</description>
+            <content type="html"><![CDATA[<p>Four weeks ago I stumbled upon the mechanical keyboards from <a href="https://keychron.com">Keychron</a> on social media. Since I was thinking about switching my current setup consisting of a Magic Keyboard, Magic Mouse, a regular Logitech mouse and Keyboard connected to my MacBook Pro and Linux box respectively, to a setup supporting multiple devices at once.</p>
+<p>I defined for me the following requirements for a keyboard:</p>
+<ul>
+<li>Wireless/Bluetooth (sick of having cables all over the place)</li>
+<li>Build in battery (replacing batteries every 2 weeks is a pain and an environmental disaster)</li>
+<li>Multi device support (ideally 3 or more)</li>
+<li>Mechanical keys (for the better touch)</li>
+<li>Compact (&lt; 100%) layout (no need for numpad)</li>
+<li>Retro look (:-))</li>
+</ul>
+<p>From browsing keyboards from various vendors my choice fell on the Keychron K6 mechanical with brown Gateron switches with white background lighting.</p>
+<p><img src="/img/keychronk6/keychronk6.png" alt="Keychron K6"></p>
+<p>With $69 (excluding shipping) that is actually the cheapest K6 configuration you can get. I don&rsquo;t need RGB backlight because I am not a pro-gamer. Neither do I need the hotswappable keys as I am not planing to mod my keyboard with custom key caps and switches.</p>
+<p>The checkout and ordering process was pretty straight forward and 5 business days later the keyboard arrived here in Germany.</p>
+<h2 id="first-impressions">First Impressions</h2>
+<p>I won&rsquo;t do any unboxing or close ups as there are plenty on YouTube and other sites. It is impressive how well the build quality of the K6 is. Even though the keyboard is entirely made out of plastics it feels heavy and has kind of solid touch to it. I didn&rsquo;t go for the Aluminum frame version since it is basically just the standard model wrapped in an Aluminum surrounding.</p>
+<h2 id="setup">Setup</h2>
+<p>Putting the side switch to the Bluetooth (BT) position and holding the <code>fn1 + Q</code> (or W, E) keys, puts the keyboard into pairing mode. The pairing with my MacBook Pro, Mac Mini and my Thinkpad running Manjaro Linux worked right away. Some people reported having connectivity issues during the pairing process but I didn&rsquo;t experience any of those. I am also using a Logitech MX Master 2s on all 3 devices and here I also didn&rsquo;t experience any issues. Switching between the devices is pretty fast too (&lt; 1s) by pressing the <code>fn1 + {Q, W, E}</code> keys.</p>
+<h2 id="experience">Experience</h2>
+<p>As expected, the Keychron K6 feels completely different compared to the Magic keyboard. It is thick, the keys go way down when being pressed without giving to much resistance and they make this fantastic and loud &ldquo;clicking&rdquo; sound. It almost feels like typing on my old Cherry keyboard from the 90s. Switching between devices is flawless and pretty fast. Since the K6 has a 65% keyboard layout, there are no dedicated F-XX keys or special keys for controlling audio or display brightness. There are however two function keys <code>fn1</code> and <code>fn2</code> which turn the number keys into the F keys or action keys respectively. One thing to note here: the K6 doesn&rsquo;t have a dedicated <code>del</code> key which might be frustrating for some people. The delete key is hidden behind the <code>fn1 + [</code> combination. Overall the typing experience is great and it is just fun typing on this keyboard.</p>
+<p><img src="/img/keychronk6/k6vsmagic.jpg" alt="k6vsmagic"></p>
+<p>One word regarding the thickness: when I say the K6 is thick, I really mean thick. Just imagine to stack up 5 Magic keyboards on top of each other. This will give you an idea how big the K6 actually is. Here is a side to side comparison of the K6 and the Magic keyboard.</p>
+<h2 id="battery-life">Battery Life</h2>
+<p>With 4000mAh the K6 has quite a durable battery build in. According to the specs, the keyboard should last 9 days when used with backlighting turned on. As I am only rarely use the backlight, I had to charge the keyboard once upon arrival 4 weeks ago.</p>
+<h2 id="verdict">Verdict</h2>
+<p>Overall the Keychron K6 is a great mechanical keyboard and offers a lot of value for the buck. Setup and connectivity is flawless and easy. The typing experience is smooth, however I would go for the heavier blue Gateron switches in the future - but that is my personal taste. I think the brown Gateron switches will be fine for 99% of the folks out there. The only thing to consider before buying the Keychron K6 is it&rsquo;s height. I would definitely add the Palm Rest to my shopping basket as using the K6 without will be a little bit hard on your wrists over time. Apart from that, if you are on the lookout for a new compact mechanical keyboard, look no further as you can&rsquo;t go wrong with the Keychron K6.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Installing Docker on a Raspberry Pi</title>
