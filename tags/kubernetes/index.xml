@@ -6,11 +6,7 @@
     <description>Recent content in kubernetes on Andreas Fritzler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://afritzler.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://afritzler.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Kind together with a Local Docker Registry</title>
       <link>https://afritzler.github.io/posts/using-kind-together-with-a-local-docker-registry/</link>
