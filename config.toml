@@ -1,0 +1,79 @@
+baseurl = "https://afritzler.github.io"
+languageCode = "en-us"
+theme = "hello-friend-ng"
+DefaultContentLanguage = "en"
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+disqusShortname = "afritzler-github-io"
+
+# [author]
+#   name = "Andreas Fritzler"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Metadata mostly used in document's head
+  description = "Andreas Fritzler's personal website"
+  keywords = "blog,developer,personal,cloud,kubernetes,infrastructure,distributedsystems,machinelearning"
+  images = [""]
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+
+  # Default theme "light" or "dark"
+  defaultTheme = "light"
+
+  #enableSharingButtons = true
+
+[params.portrait]
+    path = "/img/logo_v1.png"
+    alt = ""
+
+[[params.social]]
+    name = "github"
+    url = "https://github.com/afritzler/"
+[[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/afritzler/"
+[[params.social]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/andreasfritzler/"
+# [[params.social]]
+#     name = "medium"
+#     url = "https://medium.com/@afritzler"
+
+[languages]
+  [languages.en]
+    title = "Andreas Fritzler"
+    subtitle = "My personal website"
+    keywords = "kubernetes, cloud, machinelearning"
+    copyright = ""
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "AF "
+      logoHomeLink = "/"
+      # path = "/img/logo_v1.png"
+
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
+
+  [[menu.main]]
+    identifier = "projects"
+    name       = "Projects"
+    url        = "/projects/"
