@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <meta name="description" content="Andreas Fritzler&#39;s personal website">
+    
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://afritzler.github.io"/>
+
+<meta name="twitter:title" content="Using Kind together with a local registry"/>
+<meta name="twitter:description" content="Using Kind together with a local registry"/>
+
+    <meta property="og:title" content="Using Kind together with a local registry" />
+<meta property="og:description" content="Using Kind together with a local registry" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://afritzler.github.io/posts/using-kind-together-with-a-local-registry/" />
+<meta property="og:image" content="https://afritzler.github.io"/>
+<meta property="article:published_time" content="2020-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-02T00:00:00+00:00" /><meta property="og:site_name" content="Andreas Fritzler" />
+
+
+    
+      <base href="https://afritzler.github.io/posts/using-kind-together-with-a-local-registry/">
+    
+    <title>
+  Using Kind together with a local registry · Andreas Fritzler
+</title>
+
+    
+      <link rel="canonical" href="https://afritzler.github.io/posts/using-kind-together-with-a-local-registry/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.624134b411585efffadab6a91e7d0383f0d4e22ad49de3690eccbc96f528e670.css" integrity="sha256-YkE0tBFYXv/62rapHn0Dg/DU4irUneNpDsy8lvUo5nA=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://afritzler.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://afritzler.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.65.3" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Andreas Fritzler
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://afritzler.github.io/posts">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Using Kind together with a local registry</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-02T00:00:00Z'>
+                March 2, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              1-minute read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="/categories/kubernetes/">kubernetes</a>
+      <span class="separator">•</span>
+    <a href="/categories/development/">development</a>
+      <span class="separator">•</span>
+    <a href="/categories/cloud/">cloud</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>If you want to test your Docker images inside a Kubernetes cluster before pushing them to a public repository, using <code>kind</code> in conjunction with a local repository might be just the solution for you.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>set -o errexit
+
+<span style="color:#75715e"># desired cluster name; default is &#34;kind&#34;</span>
+KIND_CLUSTER_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>KIND_CLUSTER_NAME<span style="color:#66d9ef">:-</span>kind<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create registry container unless it already exists</span>
+reg_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kind-registry&#39;</span>
+reg_port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;5000&#39;</span>
+running<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.State.Running}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> 2&gt;/dev/null <span style="color:#f92672">||</span> true<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>running<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;true&#39;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -d --restart<span style="color:#f92672">=</span>always -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_port<span style="color:#e6db74">}</span><span style="color:#e6db74">:5000&#34;</span> --name <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry:2
+<span style="color:#66d9ef">fi</span>
+reg_ip<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>docker inspect -f <span style="color:#e6db74">&#39;{{.NetworkSettings.IPAddress}}&#39;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>reg_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># create a cluster with the local registry enabled in containerd</span>
+cat <span style="color:#e6db74">&lt;&lt;EOF | kind create cluster --name &#34;${KIND_CLUSTER_NAME}&#34; --config=-
+</span><span style="color:#e6db74">kind: Cluster
+</span><span style="color:#e6db74">apiVersion: kind.x-k8s.io/v1alpha4
+</span><span style="color:#e6db74">containerdConfigPatches:
+</span><span style="color:#e6db74">- |-
+</span><span style="color:#e6db74">  [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry.mirrors.&#34;localhost:${reg_port}&#34;]
+</span><span style="color:#e6db74">    endpoint = [&#34;http://${reg_ip}:${reg_port}&#34;]
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p>This will spin up a <code>kind</code> cluster plus a local registry which is located under <code>localhost:5000</code>. <code>docker ps</code> should produce the following output if everything went well</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                       NAMES
+7b88dbd4757b        kindest/node:v1.17.0   <span style="color:#e6db74">&#34;/usr/local/bin/entr…&#34;</span>   <span style="color:#ae81ff">11</span> minutes ago      Up <span style="color:#ae81ff">11</span> minutes       127.0.0.1:32769-&gt;6443/tcp   kind-control-plane
+e40321acce8b        registry:2             <span style="color:#e6db74">&#34;/entrypoint.sh /etc…&#34;</span>   <span style="color:#ae81ff">14</span> minutes ago      Up <span style="color:#ae81ff">14</span> minutes       0.0.0.0:5000-&gt;5000/tcp      kind-registry
+</code></pre></div><h2 id="references">References</h2>
+<p>This post is based on the official <code>kind</code> <a href="https://kind.sigs.k8s.io/docs/user/local-registry/">documentation</a>. Additional information can be also found in the <a href="https://github.com/kubernetes-sigs/kind">kind</a> GitHub repository.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "afritzler-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+    
+      
+        © 2020
+      
+      
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

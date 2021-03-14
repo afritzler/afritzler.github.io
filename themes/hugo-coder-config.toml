@@ -1,0 +1,105 @@
+baseurl = "https://afritzler.github.io"
+title = "//AF"
+
+theme = "hugo-coder"
+
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "b2"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "afritzler-github-io"
+
+[params]
+    author = "Andreas Fritzler"
+    description = "Andreas Fritzler's personal website"
+    keywords = "blog,developer,personal,cloud,kubernetes,infrastructure,machinelearning"
+    info = "Platform Guy | Data Jedi | Container & Kubernetes | Machine Learning Enthusiast | Deep Learning Fanatic"
+    avatarurl = "images/andi.jpg"
+    #footercontent = "Enter a text here."
+    favicon_16 = "images/favicon.svg"
+    favicon_32 = "images/favicon.svg"
+    favicon_64 = "images/favicon.svg"
+
+    dateformat = "January 2, 2006"
+
+    hideCredits = false
+    hideCopyright = false
+
+    # Git Commit in Footer, uncomment the line below to enable it.
+    #commit = "https://github.com/luizdepra/hugo-coder/tree/"
+
+    rtl = false
+
+    # Specify light/dark colorscheme
+    # Supported values:
+    # "auto" (use preference set by browser)
+    # "dark" (dark background, light foreground)
+    # "light" (light background, dark foreground) (default)
+    colorscheme = "auto"
+
+    # Series see also post count
+    maxSeeAlsoItems = 5
+
+    # Custom CSS
+    custom_css = []
+
+    # Custom JS
+    custom_js = []
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github"
+    weight = 1
+    url = "https://github.com/afritzler/"
+[[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter"
+    weight = 3
+    url = "https://twitter.com/afritzler/"
+[[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin"
+    weight = 4
+    url = "https://www.linkedin.com/in/andreasfritzler/"
+[[params.social]]
+    name = "Medium"
+    icon = "fab fa-medium"
+    weight = 5
+    url = "https://medium.com/@afritzler"
+
+[languages]
+    [languages.en]
+        languagename = "English"
+
+        [languages.en.menu]
+
+            # [[languages.en.menu.main]]
+            # name = "About"
+            # weight = 1
+            # url = "about/"
+
+            [[languages.en.menu.main]]
+            name = "Blog"
+            weight = 2
+            url = "posts/"
+
+            # [[languages.en.menu.main]]
+            # name = "Projects"
+            # weight = 3
+            # url = "projects/"
+
+            # [[languages.en.menu.main]]
+            # name = "Contact me"
+            # weight = 5
+            # url = "contact/"
