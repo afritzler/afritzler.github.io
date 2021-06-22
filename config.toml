@@ -6,6 +6,7 @@ PygmentsCodeFences = true
 PygmentsStyle = "monokai"
 rssLimit  = 10  # Maximum number of items in the RSS feed.
 disqusShortname = "afritzler-github-io"
+paginate = 10
 
 # [author]
 #   name = "Andreas Fritzler"
@@ -24,37 +25,31 @@ disqusShortname = "afritzler-github-io"
   keywords = "blog,developer,personal,cloud,kubernetes,infrastructure,distributedsystems,machinelearning"
   images = [""]
 
-  # Directory name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
+  enableSharingButtons = false
 
-  # Default theme "light" or "dark"
-  defaultTheme = "light"
+  [params.portrait]
+      path = "/img/logo_v1.png"
+      alt = ""
 
-  #enableSharingButtons = true
-
-[params.portrait]
-    path = "/img/logo_v1.png"
-    alt = ""
-
-[[params.social]]
-    name = "github"
-    url = "https://github.com/afritzler/"
-[[params.social]]
-    name = "twitter"
-    url = "https://twitter.com/afritzler/"
-[[params.social]]
-    name = "linkedin"
-    url = "https://www.linkedin.com/in/andreasfritzler/"
-# [[params.social]]
-#     name = "medium"
-#     url = "https://medium.com/@afritzler"
+  [[params.social]]
+      name = "github"
+      url = "https://github.com/afritzler/"
+  [[params.social]]
+      name = "twitter"
+      url = "https://twitter.com/afritzler/"
+  [[params.social]]
+      name = "linkedin"
+      url = "https://www.linkedin.com/in/andreasfritzler/"
+  # [[params.social]]
+  #     name = "medium"
+  #     url = "https://medium.com/@afritzler"
 
 [languages]
   [languages.en]
     title = "Andreas Fritzler"
     subtitle = "My personal website"
     keywords = "kubernetes, cloud, machinelearning"
-    copyright = ""
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
