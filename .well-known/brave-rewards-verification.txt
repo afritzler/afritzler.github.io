@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: afritzler.github.io
+Token: f3bcaf978793968197047f2818038c4f7fe4adb734eb875faa5bafdf9fe14ee3
